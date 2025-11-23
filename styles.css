@@ -1,0 +1,171 @@
+body {
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid burlywood;
+    text-align: center;
+}
+
+button {
+    border: 1px solid blanchedalmond;
+    padding: 4px;
+    background-color: rgb(116, 67, 7);
+    color: white;
+}
+ 
+.image-container {
+    width: 100%;
+    height: 450px;
+    background-image: url(images/books-8934573_1920.jpg);
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+p {
+   color: white;
+   font-size: 55px;
+   font-weight: bold; 
+}
+span {
+    color: rgb(253, 205, 147);
+}
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+dialog {
+    border: none;
+    border-radius: 12px;
+    padding: 2em;
+    width: 350px;
+    max-width: 95%;
+}
+
+.dialog-form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+input[type="text"], 
+input[type="number"] {
+    border: 1px solid brown;
+    border-radius: 6px;
+    outline-color: chocolate;
+    font-size: 15px;
+    width: 22.7em;
+    height: 2em;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    font-weight: 600;
+    font-size: 14px;
+    color: rgba(123, 91, 44, 0.937);
+}
+
+.checkbox-label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    padding-top: 4px;
+}
+
+fieldset {
+    border: 1px solid brown;
+    border-radius: 8px;
+    padding: 12px 15px;
+}
+button {
+    padding: 8px 14px;
+    background-color: #8b4b10; /* warm brown tone */
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.15s ease;
+}
+
+button:hover {
+    background-color: #a65c1a; /* slightly lighter on hover */
+}
+
+button:active {
+    transform: scale(0.97); /* slight press-down effect */
+}
+button[value="cancel"] {
+    background-color: #ccc;
+    color: #333;
+}
+
+button[value="cancel"]:hover {
+    background-color: #b3b3b3;
+}
+
+#booksTable tbody tr:nth-child(odd) {
+    background-color: #f7eede;
+}
+
+#booksTable tbody tr:nth-child(even) {
+    background-color: #fff;
+}
+.answer {
+    cursor: pointer;
+}
+.answer:hover {
+    background-color: #f2e2cf;            /* stronger highlight on hover */
+    color: #5c2d07;                       /* darker text on hover */
+}
+.answer:active {
+    transform: scale(0.97);               /* subtle press effect */
+}
+
+section h2 {
+    font-family: 'Georgia', 'Times New Roman', serif;
+    font-size: 28px;
+    font-weight: bold;
+    color: #7a3e09;          /* warm brown */
+    text-align: center;       /* center on the page */
+    margin: 30px 0 15px 0;    /* spacing above/below */
+    text-transform: uppercase; /* optional: all caps */
+    letter-spacing: 1px;
+}
+
+footer {
+    background-color: #8b4b10;  /* soft beige */
+    color: #5f320d;             /* dark warm brown */
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+    font-family: 'Georgia', serif;
+    border-top: 1px solid #d1bfa0;
+    margin-top: 40px;
+}
+
+#booksTable tr th {
+    background-color:  #8b4b10; /* warm brown header */
+    color: #fff8ef;            /* soft text for contrast */
+    font-weight: 600;
+    font-size: 15px;
+    padding: 12px 10px;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
