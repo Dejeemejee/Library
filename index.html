@@ -32,32 +32,32 @@
        <form action="" method="dialog" id="inputValues" class="dialog-form">
          <div>
             <label for="title">Title:</label>
-            <input type="text" name="book_title" id="title">
+            <input type="text" name="book_title" id="title" required>
          </div> 
 
          <div>
             <label for="author">Author: </label>
-            <input type="text" name="book_author" id="author">
+            <input type="text" name="book_author" id="author" required>
          </div>
 
          <div>
             <label for="page_number">Number of Pages</label>
-            <input type="number" name="page_number" id="page_number">
+            <input type="number" name="page_number" id="page_number" required>
          </div>
 
          <div>
             <label for="publisher">Publisher</label>
-            <input type="text" name="book_publisher" id="publisher">
+            <input type="text" name="book_publisher" id="publisher" required>
          </div>
 
           <fieldset>
             <legend>What is this book reading status?</legend>
-            <label for="status1" class="checkbox-label"><input type="radio" name="radio" value="read" id="status1" /> Read</label>
-            <label for="status2" class="checkbox-label"><input type="radio" name="radio" value="not read" id="status2"/> Not read</label>
+            <label for="status1" class="checkbox-label"><input type="radio" name="radio" value="read" id="status1" required> Read</label>
+            <label for="status2" class="checkbox-label"><input type="radio" name="radio" value="not read" id="status2"> Not read</label>
         </fieldset>
 
         <div>
-            <button value="cancel" formmethod="dialog">Cancel</button>
+            <button type="button" value="cancel" id="cancelBtn">Cancel</button>
             <button id="confirmBtn" value="default">Confirm</button>
        </div>
        </form>

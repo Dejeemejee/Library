@@ -3,6 +3,7 @@ const dialog = document.querySelector("#dialog");
 const showDailog = document.querySelector("#show-dialog");
 const confirmButton = document.querySelector("#confirmBtn");
 const myLibrary = [];
+let ind = 0;
 
 Book.prototype.toggleReadStatus = function () {
    if (this.answer === "read") {
@@ -30,8 +31,8 @@ function addBookToLibrary (title, author, pageNumber, publisher, answer) {
    var book = new Book(title, author, pageNumber,  publisher, answer);
   
    
+   book.id = crypto.randomUUID(); 
    myLibrary.push(book)
-   myLibrary.map((book) => {book.id = crypto.randomUUID()});
 }
   
 function displayBooks() {
@@ -78,7 +79,8 @@ table.addEventListener("click", (e) => {
     const book = myLibrary.find(bk => bk.id === uniqueId);
 
     book.toggleReadStatus();
-    rebuildTable();
+    cell.textContent = book.answer
+    changeReadStatusColor();
      
 });
 
@@ -98,19 +100,14 @@ function addBookRow(book, index) {
   const newRow = table.insertRow();
   const values = [index, book.title, book.author, book.pageNumber, book.publisher, book.answer];
     for (const value of values) {
-     if (value === null || value === " " || value === undefined) {
-      newRow.deleteRow();
-      break;
-    } else {
       const cell = newRow.insertCell();
       cell.textContent = value;
-    }
-  };
+    };
   
   changeReadStatusColor();
  // console.log(book.id);
   addDeleteButton(newRow, book.id);
-}
+};
 
 function addDeleteButton (row, identifier) {
 
@@ -130,11 +127,24 @@ showDailog.addEventListener("click", () => {
 })
 
 confirmButton.addEventListener("click", (event) => {
-  createNewBook();
-  event.preventDefault();
-  dialog.close();
-})
+  event.preventDefault();  
+  
+  const formElement = document.querySelector('form');
+  
+  if (formElement.checkValidity()) {
+    createNewBook();  
+    formElement.reset();  
+    dialog.close();
+  } else {
+   
+    formElement.reportValidity(); 
+  }
+});
 
+const cancelButton = document.querySelector("#cancelBtn");
+cancelButton.addEventListener("click", () => {
+  dialog.close();  // Just close, no validation
+});
 
 
 
@@ -142,12 +152,12 @@ confirmButton.addEventListener("click", (event) => {
 function createNewBook () {
   const formElement = document.querySelector('form');
   const formData = new FormData(formElement);
-  formValue = [];
+  let formValue = [];
   for (let [key, value] of formData) {
 
     formValue.push(value);
   } 
-  addBookToLibrary(formValue[0], formValue[1], formValue[2], formValue[3], formValue[4], formValue[5], formValue[6]);
+  addBookToLibrary(formValue[0], formValue[1], formValue[2], formValue[3], formValue[4]);
   displayBooks();
   console.log(formValue);
 }
@@ -156,7 +166,7 @@ function changeReadStatusColor() {
    const columnCells = document.querySelectorAll("table tr:not(:first-child) td:nth-child(6)");
    columnCells.forEach((cell) => {
     cell.classList.add("answer")
-    if (cell.textContent == "read") {
+    if (cell.textContent === "read") {
       cell.style.color = "green";
     } else if (cell.textContent == "not read") {
       cell.style.color = "red";
